@@ -223,6 +223,7 @@ $listeCategorie = $CategorieC->affichercategories();
 												<th onclick="sortTable(3)">Prod_desc</th>
 												<th onclick="sortTable(4)">Qte_stock</th>
 												<th onclick="sortTable(5)">Categorie</th>
+												<th onclick="sortTable(6)">Likes</th>
 												<th>image_prod</th>
 												<th>Modifier</th>
 												<th>Supprimer</th>
@@ -237,8 +238,9 @@ $listeCategorie = $CategorieC->affichercategories();
 													<td><?php echo $Produit['Prod_desc']; ?></td>
 													<td><?php echo $Produit['Qte_stock']; ?></td>
 													<td><?php echo $Produit['NomCategorie']; ?></td>
+													<td><?php echo $Produit['Likes']; ?></td>
 													<td>
-														<img src=<?php echo $Produit['image_prod'] ?>>
+													<img src="../Views/assets/img/<?PHP echo $Produit['image_prod']; ?>" class="product-img">
 													</td>
 													<td>
 														<form method="POST" action="modifierproduit.php">

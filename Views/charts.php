@@ -5,23 +5,23 @@ include_once '../Controller/CategorieC.php';
 
 $ProduitC = new ProduitC();
 $CategorieC = new CategorieC();
+
 $total = $ProduitC->countProduits();
 $outOfStock = $ProduitC->countProduitsOutoFStock();
 $InStock = $total - $outOfStock;
+
 $percentageOOS = ($outOfStock * 100) / $total;
 $percentageIS = ($InStock * 100) / $total;
+
+//Barchart
 $nomcats = $CategorieC->chercherNomcategories();
 $labels = "";
 $data = "";
 foreach ($nomcats as $nomcat) {
     $labels = $labels . '"' . $nomcat['NomCategorie'] . '"' . ',';
-}
-$labels = substr_replace($labels, "", -1);
-
-
-foreach ($nomcats as $nomcat) {
     $data = $data . $nomcat['nbr'] . ',';
 }
+$labels = substr_replace($labels, "", -1);    
 $data = substr_replace($data, "", -1);
 
 
@@ -233,7 +233,7 @@ $data = substr_replace($data, "", -1);
                                     </div>
                                 </div>
                             </div>
-                        
+
                             <div class="module">
                                 <div class="module-head">
                                     <div class="module-head">
@@ -257,7 +257,7 @@ $data = substr_replace($data, "", -1);
     new Chart(document.getElementById("pie-chart"), {
         type: 'pie',
         data: {
-            labels: ["Out Of Stock", "In Stock"],
+            labels: ["Out Of Stock(%)", "In Stock(%)"],
             datasets: [{
                 label: "Number of items",
                 backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850"],
@@ -268,9 +268,11 @@ $data = substr_replace($data, "", -1);
             title: {
                 display: true,
                 text: 'Pie chart for products stock'
+
             }
         }
     });
+
     new Chart(document.getElementById("bar-chart"), {
         type: 'bar',
         data: {
@@ -282,14 +284,17 @@ $data = substr_replace($data, "", -1);
             }]
         },
         options: {
-            legend: {
-                display: false
-            },
-            title: {
-                display: true,
-                text: 'Products distributed by categorie'
+            scales: {
+                yAxes: [{
+                    display: true,
+                    ticks: {
+                        min: 0
+                    }
+                }]
             }
+
         }
+
     });
 </script>
 

@@ -49,16 +49,16 @@ class ProduitC
 	}
 	function recupererproduit($NumProduit)
 	{
-		try{
-            $pdo=config::getConnexion();
-            $query=$pdo->prepare("SELECT * from produit where NumProduit=:NumProduit");
+		try {
+			$pdo = config::getConnexion();
+			$query = $pdo->prepare("SELECT * from produit where NumProduit=:NumProduit");
 			$query->execute([
-                'NumProduit' => $NumProduit
-            ]);
-            return $query->fetch();
-        }catch(PDOException $e){
-            $e->getMessage();
-        }
+				'NumProduit' => $NumProduit
+			]);
+			return $query->fetch();
+		} catch (PDOException $e) {
+			$e->getMessage();
+		}
 	}
 
 	function modifierproduit($Produit, $NumProduit)
@@ -72,8 +72,7 @@ class ProduitC
 						Prix=:Prix, 
 						Prod_desc=:Prod_desc, 
 						Qte_stock=:Qte_stock,
-						Id_cat=:Id_cat,
-						image_prod=:image_prod
+						Id_cat=:Id_cat
 					WHERE NumProduit=:NumProduit'
 			);
 			$query->execute([
@@ -82,7 +81,6 @@ class ProduitC
 				'Prix' => $Produit->getPrix(),
 				'Prod_desc' => $Produit->getProd_desc(),
 				'Qte_stock' => $Produit->getQte_stock(),
-				'image_prod' => $Produit->getImage_prod(),
 				'Id_cat' => $Produit->getId_cat(),
 				'NumProduit' => $NumProduit
 			]);
@@ -92,76 +90,8 @@ class ProduitC
 		}
 	}
 
-	public function trierProduitPrixDesc()
-	{
-		try {
-			$pdo = getConnexion();
-			$query = $pdo->prepare(
-				"SELECT * from produit order by prix DESC"
-			);
-			$query->execute();
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
-	public function trierProduitPrixAsc()
-	{
-		try {
-			$pdo = getConnexion();
-			$query = $pdo->prepare(
-				"SELECT * from produit order by prix ASC"
-			);
-			$query->execute();
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
-	public function trierProduitNomAsc()
-	{
-		try {
-			$pdo = getConnexion();
-			$query = $pdo->prepare(
-				"SELECT * from produit order by nom Asc"
-			);
-			$query->execute();
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
-	public function trierProduitNomDesc()
-	{
-		try {
-			$pdo = getConnexion();
-			$query = $pdo->prepare(
-				"SELECT * from produit order by nom Desc"
-			);
-			$query->execute();
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
 
 
-	public function chercherNom($Nomproduit)
-	{
-		try {
-			$input = "%$Nomproduit%";
-			$pdo = getConnexion();
-			$query = $pdo->prepare(
-				"SELECT * FROM produits WHERE Nomproduit like :Nomproduit"
-			);
-			$query->execute([
-				'Nomproduit' => $input
-			]);
-			return $query->fetchAll();
-		} catch (PDOException $e) {
-			$e->getMessage();
-		}
-	}
 
 
 	function afficherproduitsParCategorie($id_cat)
@@ -200,7 +130,8 @@ class ProduitC
 		}
 	}
 
-	function updateLikes($id){
+	function updateLikes($id)
+	{
 		try {
 			$db = config::getConnexion();
 			$query = $db->prepare(
@@ -211,11 +142,9 @@ class ProduitC
 			$query->execute([
 				'NumProduit' => $id
 			]);
-			return header("Location: product-details.php?NumProduit=". $id);
+			return header("Location: product-details.php?NumProduit=" . $id);
 		} catch (PDOException $e) {
 			$e->getMessage();
 		}
 	}
-
-
 }

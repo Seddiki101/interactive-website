@@ -18,7 +18,9 @@ $ProduitC = new ProduitC();
 if (isset($_POST["Nomproduit"]) && isset($_POST["Marque"]) && isset($_POST["Prix"]) && isset($_POST["Prod_desc"]) && isset($_POST["Qte_stock"]) && isset($_POST["Id_cat"])) {
     $image = $_FILES['img']['name'];
     $ext = pathinfo($image, PATHINFO_EXTENSION);
+    //name of my image in my DataBase
     $newname = rand() . time() . '.' . $ext;
+    move_uploaded_file($_FILES['img']['tmp_name'], '../Views/assets/img/' . $newname);
     if ($ext != "PNG" && $ext != "png" && $ext != "jpg" && $ext != "JPG") {
         echo '<script>
                 alert("Seulement les formats PNG et JPG sont acceptés");
@@ -245,14 +247,14 @@ if (isset($_POST["Nomproduit"]) && isset($_POST["Marque"]) && isset($_POST["Prix
                                             <label for="Prix">Prix:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Prix" id="Prix" maxlength="20"></td>
+                                        <td><input type="text" name="Prix" id="Prix" maxlength="255"></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="Prod_desc">Prod_desc:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Prod_desc" id="Prod_desc" maxlength="20"></td>
+                                        <td><textarea type="text" name="Prod_desc" id="Prod_desc" maxlength="20"></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>

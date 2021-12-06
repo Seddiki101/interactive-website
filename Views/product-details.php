@@ -19,7 +19,6 @@ if (isset($_GET['NumProduit'])) {
 }
 if(isset($_POST['like'])) {
 	$id = $_POST['NumProduit'];
-	
 	$ProduitC->updateLikes($id);	
 	
 }
@@ -84,6 +83,7 @@ if(isset($_POST['like'])) {
 						</div>
 
 						<div class="col-md-7">
+							<!---Outta stock--->
 							<h2><?php echo $Produit['Prix']; ?> DT</h2>
 							<?php if ($Produit['Qte_stock'] == 0) {
 								echo "<p>Out of Stock</p>";
@@ -91,6 +91,7 @@ if(isset($_POST['like'])) {
 							?>
 							<p><?php echo $Produit['Prod_desc']; ?></p>
 							
+							<!---Likes--->
 							<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
 								
 								<input type="hidden" name="NumProduit" value="<?php echo $Produit['NumProduit']; ?>">

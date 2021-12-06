@@ -16,6 +16,7 @@ $ProduitC = new ProduitC();
 $CatC = new CategorieC();
 $listeC = $CatC->affichercategories();
 
+
 ?>
 
 <!DOCTYPE html>
@@ -213,7 +214,7 @@ $listeC = $CatC->affichercategories();
                                     $Produit = $ProduitC->recupererproduit($_POST['NumProduit']);
 
                                 ?>
-                                    <form action="modifierprodaction.php" method="POST">
+                                    <form action="modifierprodaction.php" method="POST" enctype="multipart/form-data">
                                         <table border="0" class="table table-striped" align="center">
                                             <tr>
                                                 <td>
@@ -282,15 +283,19 @@ $listeC = $CatC->affichercategories();
                                                     <label for="likes">Likes:
                                                     </label>
                                                 </td>
-                                                <td><input type="text" name="likes" id="likes" value="<?php echo $Produit['Likes']; ?>"disabled></td>
+                                                <td><input type="text" name="likes" id="likes" value="<?php echo $Produit['Likes']; ?>" disabled></td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label for="image_prod">Image_prod:
                                                     </label>
                                                 </td>
-                                                <td><img src="../Views/assets/img/<?PHP echo $Produit['image_prod']; ?>" class="product-img"></td>
-                                            </tr>
+                                                <td>
+
+                                                <td>
+                                                    <img src="../Views/assets/img/<?PHP echo $Produit['image_prod']; ?>" class="product-img">
+                                                    <input hidden id="image_prod" name="image_prod" value="<?php echo $Produit['image_prod']; ?>">
+                                                </td>
                                             <tr>
                                                 <td></td>
                                                 <td>
