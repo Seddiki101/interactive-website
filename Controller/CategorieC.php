@@ -1,5 +1,5 @@
 <?php
-	include '../config.php';
+	include_once '../config.php';
 	include_once '../Model/Categorie.php';
 	class CategorieC {
 		function affichercategories(){
@@ -26,14 +26,15 @@
 			}
 		}
 		function ajoutercategorie($categorie){
-			$sql="INSERT INTO categorie ( Id_cat,NomCategorie) 
-			VALUES (DEFAULT,:NomCategorie)";
+			$sql="INSERT INTO categorie ( Id_cat, NomCategorie, image_cat) 
+			VALUES (DEFAULT,:NomCategorie, :image_cat)";
 			$db = config::getConnexion();
 			try{
 				$query = $db->prepare($sql);
 				$query->execute([
 					
-					'NomCategorie' => $categorie->getNomCategorie()
+					'NomCategorie' => $categorie->getNomCategorie(),
+					'image_cat' => $categorie->getImage_cat()
 				]);			
 			}
 			catch (Exception $e){
@@ -60,16 +61,30 @@
 				$db = config::getConnexion();
 				$query = $db->prepare(
 					'UPDATE categorie SET 
-						Id_cat= :Id_cat,
-						NomCategorie= :NomCategorie
+						
+						NomCategorie= :NomCategorie,
+						image_cat= :image_cat 
 					WHERE Id_cat= :Id_cat'
 				);
 				$query->execute([
 					'NomCategorie' => $categorie->getNomCategorie(),
+					'image_cat' => $categorie->getImage_cat(),
 					'Id_cat' => $Id_cat
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
 			} catch (PDOException $e) {
+				$e->getMessage();
+			}
+		}
+		function chercherNomcategories(){
+			try{
+				$pdo= config::getConnexion();
+				$query=$pdo->prepare(
+					"SELECT NomCategorie,count(p.id_cat) as nbr FROM produit p inner join categorie c on c.id_cat=p.id_cat group by Nomcategorie"
+				);
+				$query->execute();
+				return $query->fetchAll();
+			}catch(PDOException $e){
 				$e->getMessage();
 			}
 		}
