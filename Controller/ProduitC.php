@@ -1,7 +1,8 @@
 <?php
-include_once '../config.php';
-include_once '../Model/Produit.php';
-class ProduitC
+require_once 'C:\\xampp\htdocs\ncix\config.php';
+
+require_once 'C:\\xampp\htdocs\ncix\config.php';
+require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';class ProduitC
 {
 	function afficherproduits()
 	{

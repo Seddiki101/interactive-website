@@ -1,5 +1,7 @@
 <?php
+set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\xampp\htdocs\ncix');
   class config {
+    
     private static $pdo = NULL;
 
     public static function getConnexion() {

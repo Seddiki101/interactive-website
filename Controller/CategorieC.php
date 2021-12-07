@@ -1,6 +1,6 @@
 <?php
-	include_once '../config.php';
-	include_once '../Model/Categorie.php';
+require_once 'C:\\xampp\htdocs\ncix\config.php';
+require_once 'C:\\xampp\htdocs\ncix\Model\Categorie.php';
 	class CategorieC {
 		function affichercategories(){
 			$sql="SELECT * FROM categorie";
@@ -62,13 +62,11 @@
 				$query = $db->prepare(
 					'UPDATE categorie SET 
 						
-						NomCategorie= :NomCategorie,
-						image_cat= :image_cat 
+						NomCategorie= :NomCategorie
 					WHERE Id_cat= :Id_cat'
 				);
 				$query->execute([
 					'NomCategorie' => $categorie->getNomCategorie(),
-					'image_cat' => $categorie->getImage_cat(),
 					'Id_cat' => $Id_cat
 				]);
 				echo $query->rowCount() . " records UPDATED successfully <br>";
