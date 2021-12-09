@@ -228,7 +228,7 @@ if (isset($_POST["Nomproduit"]) && isset($_POST["Marque"]) && isset($_POST["Prix
                                 <?php echo $error; ?>
                             </div>
 
-                            <form action="" method="POST" enctype="multipart/form-data">
+                            <form name="form1" action="" method="POST" enctype="multipart/form-data">
                                 <table border="0" align="center class=" table table-striped">
 
                                     <tr>
@@ -236,35 +236,75 @@ if (isset($_POST["Nomproduit"]) && isset($_POST["Marque"]) && isset($_POST["Prix
                                             <label for="Nomproduit">Nomproduit:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Nomproduit" id="Nomproduit" maxlength="20"></td>
+                                        <td><input type="text" name="Nomproduit" id="Nomproduit" maxlength="20"  required></td>
                                     </tr>
+                                    <script>function allLetter(inputtxt)
+  {
+   var letters = /^[A-Za-z]+$/;
+   if(inputtxt.value.match(letters))
+     {
+      return true;
+     }
+   else
+     {
+     alert("The product should be in all alphabets");
+     return false;
+     }
+  } </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                     <tr>
                                         <td>
                                             <label for="Marque">Marque:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Marque" id="Marque" maxlength="20"></td>
+                                        <td><input type="text" name="Marque" id="Marque" maxlength="20" required ></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="Prix">Prix:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Prix" id="Prix" maxlength="255"></td>
+                                        <td><input type="text" name="Prix" id="Prix" maxlength="255" required></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="Prod_desc">Prod_desc:
                                             </label>
                                         </td>
-                                        <td><textarea type="text" name="Prod_desc" id="Prod_desc" maxlength="20"></textarea></td>
+                                        <td><textarea type="text" name="Prod_desc" id="Prod_desc" maxlength="10000" required></textarea></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="Qte_stock">Qte_stock:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="Qte_stock" id="Qte_stock" maxlength="20"></td>
+                                        <td><input type="number" name="Qte_stock" id="Qte_stock" maxlength="20" required></td>
                                     </tr>
                                     <tr>
                                         <td>
@@ -290,7 +330,7 @@ if (isset($_POST["Nomproduit"]) && isset($_POST["Marque"]) && isset($_POST["Prix
                                     <tr>
                                         <td></td>
                                         <td>
-                                            <input type="submit" value="Envoyer">
+                                            <input type="submit" value="Envoyer" onclick="allLetter(document.form1.Nomproduit)">
                                         </td>
                                         <td>
                                             <input type="reset" value="Annuler">

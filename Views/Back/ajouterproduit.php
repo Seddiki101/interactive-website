@@ -1,7 +1,8 @@
 <?php
 
 require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
+require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';
+require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
 
 
 $error = "";
@@ -23,32 +24,39 @@ if (
     isset($_POST["image_prod"])
 ) {
     if (
-        ctype_alpha($nom) &&
+        
         !empty($_POST["Nomproduit"]) &&
         !empty($_POST["Marque"]) &&
         !empty($_POST["Prix"]) &&
         !empty($_POST["Prod_desc"]) &&
         !empty($_POST["Qte_stock"]) &&
         !empty($_POST["Id_cat"]) &&
-        !empty($_POST["image_prod"])
+        !empty($_POST["image_prod"]) 
+        
     ) {
+        
+        //Adding the image 
         $image = $_FILES['img']['name'];
         $ext = pathinfo($image, PATHINFO_EXTENSION);
         $newname = rand() . time() . '.' . $ext;
 
-        move_uploaded_file($_FILES['img']['tmp_name'], '../assets/img/' . $newname);
+        move_uploaded_file($_FILES['img']['tmp_name'], '../../assets/images/' . $newname);
 
         if ($ext != "PNG" && $ext != "png" && $ext != "jpg" && $ext != "JPG") {
             echo '<script>
         alert("Seulement les formats PNG et JPG sont acceptés");
     </script>';
+     
+ 
+        } else {
+            $Produit = new Produit($_POST['Nomproduit'], $_POST['Marque'], $_POST['Prix'], $_POST['Prod_desc'], $_POST['Qte_stock'], $_POST['Id_cat'], $_POST['image_prod']);
+            $ProduitC->ajouterproduit($Categorie);
+            header('Location:afficherListeCProduits.php');
         }
-        $Produit = new Produit($_POST['Nomproduit'], $_POST['Marque'], $_POST['Prix'], $_POST['Prod_desc'], $_POST['Qte_stock'], $_POST['Id_cat'], $_POST['image_prod']);
-        $ProduitC->ajouterproduit($Categorie);
-        header('Location:afficherListeCProduits.php');
     } else
         $error = "Missing information or invalid name";
 }
+
 
 
 ?>
@@ -252,14 +260,14 @@ if (
                                             <label for="NomCategorie">NomCategorie:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="NomCategorie" id="NomCategorie" maxlength="20"></td>
+                                        <td><input type="text" name="NomCategorie" id="NomCategorie" maxlength="20" required></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="image_cat">image_cat:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="image_cat" id="image_cat" maxlength="20"></td>
+                                        <td><input type="text" name="image_cat" id="image_cat" maxlength="20" required></td>
                                     </tr>
                                     <tr>
                                         <td></td>

@@ -1,3 +1,15 @@
+<?php
+require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
+require_once 'C:\\xampp\htdocs\ncix\Controller\CategorieC.php';
+$ProduitC = new ProduitC();
+$CategorieC = new CategorieC();
+$listeProduits = $ProduitC->afficherproduits();
+$listeCategorie = $CategorieC->affichercategories();
+
+?>
+
+
+
 <!DOCTYPE HTML>
 <html>
 	<head>
@@ -64,112 +76,28 @@
 				<!-- Main -->
 				<div id="main">
 					
-					
-					<!-- About us -->
-					
-					
-					<!-- Featured Products -->
-							<section class="tiles">
-								<article>
-									<span class="image">
-										<img src="images/product-1-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 1</h3>
+				<section class="tiles">
+				<?php
+					foreach ($listeCategorie as $Categorie) {
+					?>
 
-										<p><del>$99.00 </del> <strong>$79.00</strong></p>
+						<article>
+							
+							<span class="image">
+								<img src=" ../../assets/images/<?PHP echo $Categorie['image_cat']; ?>" class="product-img">
+							</span>
+							<header class="major">
+								<h3><?php echo $Categorie['NomCategorie']; ?></h3>
 
-										<p>Expensive or cheap, just buy </p>
+								<a href="productsbycat.php?NumCategorie=<?php echo $Categorie['Id_cat']; ?>" class="button small next">View Products</a>
 
-										<div class="major-actions">
-											<a href="products.php" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-								<article>
-									<span class="image">
-										<img src="images/product-2-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 2</h3>
+							</header>
+						</article>
+					<?php
+					}
+					?>
+				</section>
 
-										<p><del>$199.00</del> <strong>$179.00</strong></p>
-
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</p>
-
-										<div class="major-actions">
-											<a href="products.php" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-								<article>
-									<span class="image">
-										<img src="images/product-3-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 3</h3>
-
-										<p><del>$99.00</del> <strong> $79.00</strong></p>
-
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</p>
-
-										<div class="major-actions">
-											<a href="products.php" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-								<article>
-									<span class="image">
-										<img src="images/product-4-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 4</h3>
-
-										<p><del>$99.00</del> <strong> $79.00</strong></p>
-
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</p>
-
-										<div class="major-actions">
-											<a href="products.php" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-								<article>
-									<span class="image">
-										<img src="images/product-5-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 5</h3>
-
-										<p><del>$99.00</del> <strong> $79.00</strong></p>
-
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</p>
-
-										<div class="major-actions">
-											<a href="products.html" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-								<article>
-									<span class="image">
-										<img src="images/product-6-720x480.jpg" alt="" />
-									</span>
-									<header class="major">
-										<h3>Categorie 6</h3>
-
-										<p><del>$99.00</del> <strong> $79.00</strong></p>
-
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum dicta voluptas quia dolor fuga odit.</p>
-
-										<div class="major-actions">
-											<a href="products.php" class="button small next">View Products</a>
-										</div>
-									</header>
-								</article>
-							</section>
-
-					<!-- Testimonials -->
-					
 					
 
 				<!-- Footer -->

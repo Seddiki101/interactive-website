@@ -1,7 +1,8 @@
 <?php
 
 require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
+require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';
+require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
 
 require_once 'C:\\xampp\htdocs\ncix\Model\Categorie.php';
 require_once 'C:\\xampp\htdocs\ncix\Controller\CategorieC.php';
@@ -14,14 +15,15 @@ $Produit = null;
 $ProduitC = new ProduitC();
 $CatC = new CategorieC();
 
+//Getting the Numproduit of the product 
 if (isset($_GET['NumProduit'])) {
 	$id = $_GET['NumProduit'];
 	$Produit = $ProduitC->recupererproduit($id);
 }
-if(isset($_POST['like'])) {
-	$id = $_POST['NumProduit'];
-	$ProduitC->updateLikes($id);	
-	
+//And here I'm getting the number of likes and getting the fucntion Like 
+
+if (isset($_POST['like'])) {
+	$ProduitC->updateLikes($_POST['NumProduit']);
 }
 ?>
 
@@ -91,10 +93,10 @@ if(isset($_POST['like'])) {
 							}
 							?>
 							<p><?php echo $Produit['Prod_desc']; ?></p>
-							
+
 							<!---Likes--->
 							<form action="<?php echo $_SERVER['PHP_SELF'] ?>" method="POST">
-								
+
 								<input type="hidden" name="NumProduit" value="<?php echo $Produit['NumProduit']; ?>">
 								<input type="submit" value=" <?php echo $Produit['Likes']; ?> likes" name='like' />
 
@@ -123,7 +125,7 @@ if(isset($_POST['like'])) {
 											</div>
 										</div>
 
-                                       <!---Outta stock--->
+										<!---Outta stock--->
 										<div class="col-sm-6">
 											<?php if ($Produit['Qte_stock'] == 0) {
 												echo '<input type="submit"  class="primary" value="Add to Cart" disabled>';
@@ -134,6 +136,12 @@ if(isset($_POST['like'])) {
 											?>
 
 										</div>
+									</div>
+									<div class="row">
+										
+										<!-- pdf button created-->
+									<a href="productPDF.php?NumProduit=<?php echo $Produit['NumProduit']; ?>" class="button small next">Download Technical Sheet</a>
+
 									</div>
 								</div>
 							</div>

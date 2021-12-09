@@ -62,6 +62,18 @@ $listeCategorie = $CategorieC->affichercategories();
 					<header class="major">
 						<h1>Products</h1>
 					</header>
+					<!-- Filter By Categories -->
+					<form action="productsbycat.php" method="POST">
+						<select name="categorie" value='' id='filterCategorie'>Categorie</option>
+							<?php
+							foreach ($listeCategorie as $Categorie) {
+								echo "<option value=$Categorie[Id_cat]>$Categorie[NomCategorie]</option>";
+							}
+							echo "</select>";
+
+							?>
+							<input type="submit" class="button" value="Filter">
+					</form>
 				</div>
 				<section class="tiles">
 					<!-- Featured Products -->
@@ -70,8 +82,17 @@ $listeCategorie = $CategorieC->affichercategories();
 					?>
 
 						<article>
+							
+							<!---hot image if likes>100--->
+							<?php if ($Produit['Likes'] >= 100) {
+								echo
+								"<div style='position: absolute; top: 0; right: 0; width: 100px; text-align:right;'>
+								<img src='../../assets/images/hot-item.png' class='product-img'>
+							</div>";
+							}
+							?>
 							<span class="image">
-							<img src=" ../../assets/images/<?PHP echo $Produit['image_prod']; ?>" class="product-img">
+								<img src=" ../../assets/images/<?PHP echo $Produit['image_prod']; ?>" class="product-img">
 							</span>
 							<header class="major">
 								<h3><?php echo $Produit['Nomproduit']; ?></h3>
@@ -79,10 +100,12 @@ $listeCategorie = $CategorieC->affichercategories();
 								<p><?php echo $Produit['Prix']; ?> </p>
 
 								<p><?php echo $Produit['Prod_desc']; ?></p>
+								<?php if ($Produit['Qte_stock'] == 0) {
+									echo "<p style='color:red'>Out of Stock</p>";
+								}
+								?>
+								<a href="product-details.php?NumProduit=<?php echo $Produit['NumProduit']; ?>" class="button small next">View Product</a>
 
-								
-									<a href="product-details.php?NumProduit=<?php echo $Produit['NumProduit']; ?>" class="button small next">View Product</a>
-								
 							</header>
 						</article>
 					<?php

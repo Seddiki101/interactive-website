@@ -13,27 +13,26 @@ $nom = $_POST["NomCategorie"] ?? "";
 $CategorieC = new CategorieC();
 if (
 
-    isset($_POST["NomCategorie"]) &&
-    isset($_POST["image_cat"])
+    isset($_POST["NomCategorie"])
+
 ) {
     if (
         ctype_alpha($nom) &&
-        !empty($_POST["NomCategorie"]) &&
-        !empty($_POST["image_cat"])
+        !empty($_POST["NomCategorie"])
     ) {
         $image = $_FILES['img']['name'];
-        $ext = pathinfo($image, PATHINFO_EXTENSION);
+    $ext = pathinfo($image, PATHINFO_EXTENSION);
+        
+    //name of my image in my DataBase
 
-        //name of my image in my DataBase
-
-        $newname = rand() . time() . '.' . $ext;
-
-        move_uploaded_file($_FILES['img']['tmp_name'], 'C://xampp/htdocs/ncix/assets/images/' . $newname);
-        if ($ext != "PNG" && $ext != "png" && $ext != "jpg" && $ext != "JPG") {
-            echo '<script>
+    $newname = rand() . time() . '.' . $ext;
+  
+    move_uploaded_file($_FILES['img']['tmp_name'], 'C://xampp/htdocs/ncix/assets/images/' . $newname);
+    if ($ext != "PNG" && $ext != "png" && $ext != "jpg" && $ext != "JPG") {
+        echo '<script>
                 alert("Seulement les formats PNG et JPG sont acceptés");
             </script>';
-        } else {
+    } else {
             $Categorie = new Categorie(
                 $_POST['NomCategorie'],
                 $newname
@@ -41,8 +40,7 @@ if (
             $CategorieC->ajoutercategorie($Categorie);
             header('Location:afficherListeCategories.php');
         }
-    } else
-        $error = "Missing information or invalid name";
+    } 
 }
 
 
@@ -246,7 +244,7 @@ if (
                                 <?php echo $error; ?>
                             </div>
 
-                            <form action="" method="POST">
+                            <form action="" method="POST" enctype="multipart/form-data">
                                 <table border="0" align="center class=" table table-striped">
 
                                     <tr>

@@ -203,7 +203,7 @@ $listeCategories = $CategorieC->affichercategories();
 								<center>
 									<h1>Liste des Categories</h1>
 								</center>
-								<input type="text" id="searchInput" onkeyup="search('tableCategorie')" class="form-control" placeholder="Chercher Un Produit">
+								<input type="text" id="searchInput" onkeyup="search('tableCategorie')" class="form-control" placeholder="Chercher Une Categorie">
 								<div class="table-sortable">
 									<table border="1" align="center" cellpadding="0" cellspacing="0" border="0" class="table table-sm table-bordered table-sortable table-striped display" id="tableCategorie" width="100%">
 										<tr>

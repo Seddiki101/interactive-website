@@ -14,16 +14,13 @@ $Categorie = null;
 $CategorieC = new CategorieC();
 if (
     isset($_POST["Id_cat"]) &&
-    isset($_POST["NomCategorie"]) &&
-    isset($_POST["image_cat"])
+    isset($_POST["NomCategorie"]) 
 ) {
     if (
         !empty($_POST["Id_cat"]) &&
-        !empty($_POST["NomCategorie"]) &&
-        !empty($_POST["image_cat"])
+        !empty($_POST["NomCategorie"])
     ) {
         $Categorie = new Categorie(
-            /*$_POST['Id_cat'],*/
             $_POST['NomCategorie'],
             $_POST['image_cat'],
         );

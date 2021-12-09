@@ -1,8 +1,9 @@
 <?php
-require_once 'C:\\xampp\htdocs\ncix\config.php';
 
 require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';class ProduitC
+require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';
+
+class ProduitC
 {
 	function afficherproduits()
 	{
@@ -137,7 +138,7 @@ require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';class ProduitC
 			$db = config::getConnexion();
 			$query = $db->prepare(
 				'UPDATE produit SET 
-						Likes=likes+1
+						Likes=Likes+1
 					WHERE NumProduit=:NumProduit'
 			);
 			$query->execute([

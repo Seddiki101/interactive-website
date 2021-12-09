@@ -1,5 +1,7 @@
 <?php
 set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\xampp\htdocs\ncix');
+
+
   class config {
     
     private static $pdo = NULL;
@@ -20,4 +22,3 @@ set_include_path(get_include_path() . PATH_SEPARATOR . 'C:\xampp\htdocs\ncix');
       return self::$pdo;
     }
   }
-?>
