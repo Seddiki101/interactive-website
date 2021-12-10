@@ -1,6 +1,6 @@
 ﻿<?php
-    require_once 'C:\\xampp\htdocs\ncix\Model\Categorie.php';
-    require_once 'C:\\xampp\htdocs\ncix\Controller\CategorieC.php';
+    require_once '..\..\Model\Categorie.php';
+    require_once '..\..\Controller\CategorieC.php';
 
 
     $error = "";

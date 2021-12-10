@@ -1,6 +1,6 @@
 <?php
-require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Model\Categorie.php';
+require_once '..\..\config.php';
+require_once '..\..\Model\Categorie.php';
 	class CategorieC {
 		function affichercategories(){
 			$sql="SELECT * FROM categorie";

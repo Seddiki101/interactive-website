@@ -1,7 +1,7 @@
 ﻿<?php
-require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
-require_once 'C:\\xampp\htdocs\ncix\Controller\CategorieC.php';
+require_once '..\..\config.php';
+require_once '..\..\Controller\ProduitC.php';
+require_once '..\..\Controller\CategorieC.php';
 
 $ProduitC = new ProduitC();
 $CategorieC = new CategorieC();

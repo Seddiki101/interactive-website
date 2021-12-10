@@ -1,7 +1,7 @@
 <?php
-require_once 'C:\\xampp\htdocs\ncix\config.php';
+require_once '..\..\config.php';
 
-require_once 'C:\\xampp\htdocs\ncix\Controller\CategorieC.php';
+require_once '..\..\Controller\CategorieC.php';
 $CategorieC = new CategorieC();
 $listeCategories = $CategorieC->affichercategories();
 ?>

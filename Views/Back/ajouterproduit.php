@@ -1,8 +1,8 @@
 <?php
 
-require_once 'C:\\xampp\htdocs\ncix\config.php';
-require_once 'C:\\xampp\htdocs\ncix\Model\Produit.php';
-require_once 'C:\\xampp\htdocs\ncix\Controller\ProduitC.php';
+require_once '..\..\config.php';
+require_once '..\..\Model\Produit.php';
+require_once '..\..\Controller\ProduitC.php';
 
 
 $error = "";
