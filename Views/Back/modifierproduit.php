@@ -238,14 +238,14 @@ if (isset($_POST['NumProduit']) && isset($_POST['Nomproduit']) && isset($_POST['
                                                     <label for="Nomproduit">Nomproduit:
                                                     </label>
                                                 </td>
-                                                <td><input type="text" name="Nomproduit" id="Nomproduit" value="<?php echo $Produit['Nomproduit']; ?>"></td>
+                                                <td><input type="text" name="Nomproduit" id="Nomproduit" value="<?php echo $Produit['Nomproduit']; ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td>
                                                     <label for="Marque">Marque:
                                                     </label>
                                                 </td>
-                                                <td><input type="text" name="Marque" id="Marque" value="<?php echo $Produit['Marque']; ?>"></td>
+                                                <td><input type="text" name="Marque" id="Marque" value="<?php echo $Produit['Marque']; ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td>
@@ -253,7 +253,7 @@ if (isset($_POST['NumProduit']) && isset($_POST['Nomproduit']) && isset($_POST['
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    <input type="text" name="Prix" value="<?php echo $Produit['Prix']; ?>" id="Prix">
+                                                    <input type="text" name="Prix" value="<?php echo $Produit['Prix']; ?>" id="Prix" required>
                                                 </td>
                                             </tr>
                                             <tr>
@@ -262,7 +262,7 @@ if (isset($_POST['NumProduit']) && isset($_POST['Nomproduit']) && isset($_POST['
                                                     </label>
                                                 </td>
                                                 <td>
-                                                    <textarea name="Prod_desc" id="Prod_desc" placeholder="<?php echo $Produit['Prod_desc']; ?>" value="<?php echo $Produit['Prod_desc']; ?>"></textarea>
+                                                    <textarea name="Prod_desc" id="Prod_desc" placeholder="<?php echo $Produit['Prod_desc']; ?>" value="<?php echo $Produit['Prod_desc']; ?>" required></textarea>
 
 
                                                 </td>
@@ -272,7 +272,7 @@ if (isset($_POST['NumProduit']) && isset($_POST['Nomproduit']) && isset($_POST['
                                                     <label for="Qte_stock">Qte_stock:
                                                     </label>
                                                 </td>
-                                                <td><input type="text" name="Qte_stock" id="Qte_stock" value="<?php echo $Produit['Qte_stock']; ?>"></td>
+                                                <td><input type="number" name="Qte_stock" id="Qte_stock" value="<?php echo $Produit['Qte_stock']; ?>" required></td>
                                             </tr>
                                             <tr>
                                                 <td>

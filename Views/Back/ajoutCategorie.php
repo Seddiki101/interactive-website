@@ -252,14 +252,14 @@ if (
                                             <label for="NomCategorie">NomCategorie:
                                             </label>
                                         </td>
-                                        <td><input type="text" name="NomCategorie" id="NomCategorie" maxlength="20"></td>
+                                        <td><input type="text" name="NomCategorie" id="NomCategorie" maxlength="20" required></td>
                                     </tr>
                                     <tr>
                                         <td>
                                             <label for="image_cat">image_cat:
                                             </label>
                                         </td>
-                                        <td><input class="btn btn-primary btn-block" required id="img" type="file" name="img" accept="*/image"></td>
+                                        <td><input class="btn btn-primary btn-block" required id="img" type="file" name="img" accept="*/image" required></td>
                                     </tr>
                                     <tr>
                                         <td></td>

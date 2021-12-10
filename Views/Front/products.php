@@ -84,7 +84,7 @@ $listeCategorie = $CategorieC->affichercategories();
 						<article>
 							
 							<!---hot image if likes>100--->
-							<?php if ($Produit['Likes'] >= 100) {
+							<?php if ($Produit['Likes'] >= 10) {
 								echo
 								"<div style='position: absolute; top: 0; right: 0; width: 100px; text-align:right;'>
 								<img src='../../assets/images/hot-item.png' class='product-img'>
