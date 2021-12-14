@@ -19,6 +19,7 @@ if(isset($_POST['save'])&& !empty($_POST['titresujet']) && !empty($_POST['conten
            );
         $sujetc=new sujetc();
         $sujetc->ajoutersujet($sujet);
+		header("Location:index.php");
         
 
 }
