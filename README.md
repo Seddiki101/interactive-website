@@ -1,2 +1,2 @@
 # interactive-website
-This website is made for a company that provide various services and sell different products
+This is a website that manages manages customers / products / services
